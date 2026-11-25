@@ -1,0 +1,4 @@
+customer_id,customer_unique_id,customer_city,customer_state,customer_segment
+C001,U001,Chennai,TN,Premium
+C002,U002,Coimbatore,TN,Regular
+C003,U003,Tiruppur,TN,Premium

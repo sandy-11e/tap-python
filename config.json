@@ -10,6 +10,7 @@
         "order_status": "status",
         "order_purchase_timestamp": "purchase_date",
         "product_id": "product_id",
-        "product_category_name": "category"
+        "product_category_name": "category",
+        "customer_segment": "segment"
     }
 }
