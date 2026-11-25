@@ -1,21 +1,25 @@
-COLUMN_MAPPING = {
-    "customer_id": "customer_id",
-    "customer_unique_id": "unique_customer_id",
-    "customer_zip_code_prefix": "postal_code",
-    "customer_city": "city",
-    "customer_state": "state",
+import json
 
-    "order_id": "order_id",
-    "order_status": "status",
-    "order_purchase_timestamp": "purchase_date",
+import pandas as pd
 
-    "product_id": "product_id",
-    "product_category_name": "category"
-}
 
-def standardize_columns(df):
-    df = df.rename(columns=COLUMN_MAPPING)
-    return df
+def load_column_mapping(config_path: str) -> dict[str, str]:
+    """Load column mapping from a JSON configuration file."""
+
+    with open(config_path, "r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    return config["column_mapping"]
+
+
+def standardize_columns(df, config_path):
+    with open(config_path, "r", encoding="utf-8") as file:
+        config = json.load(file)
+
+    mapping = config["column_mapping"]
+
+    return df.rename(columns=mapping)
+
 
 def transform_dataframe(df):
     df = df.drop_duplicates()
@@ -23,8 +27,10 @@ def transform_dataframe(df):
 
     return df
 
+
 def to_snake_case(columns):
     return [col.strip().lower().replace(" ", "_") for col in columns]
+
 
 def convert_data_types(df):
     float_columns = ["price", "freight_value"]
@@ -38,7 +44,7 @@ def convert_data_types(df):
         "order_approved_at",
         "order_delivered_carrier_date",
         "order_delivered_customer_date",
-        "order_estimated_delivery_date"
+        "order_estimated_delivery_date",
     ]
 
     for col in timestamp_columns:

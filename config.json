@@ -1,0 +1,15 @@
+
+{
+    "column_mapping": {
+        "customer_id": "customer_id",
+        "customer_unique_id": "unique_customer_id",
+        "customer_zip_code_prefix": "postal_code",
+        "customer_city": "city",
+        "customer_state": "state",
+        "order_id": "order_id",
+        "order_status": "status",
+        "order_purchase_timestamp": "purchase_date",
+        "product_id": "product_id",
+        "product_category_name": "category"
+    }
+}
