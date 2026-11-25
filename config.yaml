@@ -1,0 +1,12 @@
+paths:
+  input: "olist"
+  output: "output"
+  logs: "logs"
+
+thresholds:
+  min_order_value: 0
+  max_missing_percentage: 20
+
+mappings:
+  state_column: "customer_state"
+  city_column: "customer_city"
